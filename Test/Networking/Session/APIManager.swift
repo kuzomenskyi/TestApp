@@ -19,7 +19,7 @@ final class APIManager {
     @discardableResult
     func sessionRequest<T: Decodable>(with request: Request,
                                       decoder: JSONDecoder? = nil,
-                                      completion: @escaping Completions.ModelResult<T>) -> URLSessionDataTaskMockable {
+                                      completion: @escaping Completions.ModelResult<T>) -> URLSessionDataTaskMockable? {
         let dataTask = session.dataTask(with: request, decoder: decoder) { (data: ResponseData<T>?, response, error) in
             DispatchQueue.main.async {
                 if data?.error != nil {
@@ -38,6 +38,11 @@ final class APIManager {
                     completion(data?.data, nil)
                 }
             }
+        }
+        
+        guard let dataTask = dataTask else {
+            completion(nil, CustomError("Data task is nil"))
+            return nil
         }
         
         dataTask.resume()

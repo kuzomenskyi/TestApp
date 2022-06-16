@@ -12,11 +12,11 @@ enum AuthRouter: Request {
     case getUserReposByName(userName: String)
     case getUserReposByURL(userReposPath: String)
     
-    var url: URL {
+    var url: URL? {
         switch self {
         case .getUserInfo:
             guard let url = URL(string: "https://api.github.com/user") else {
-                fatalError("Wrong url")
+                return nil
             }
             return url
         case .getUserReposByName(let userName):

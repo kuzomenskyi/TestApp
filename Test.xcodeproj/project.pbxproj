@@ -28,6 +28,9 @@
 		A5B8F8D62859FDAD00C291B7 /* RepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B8F8D42859FDAD00C291B7 /* RepoTableViewCell.swift */; };
 		A5B8F8D72859FDAD00C291B7 /* RepoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5B8F8D52859FDAD00C291B7 /* RepoTableViewCell.xib */; };
 		A5B8F8D92859FDF600C291B7 /* CellInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B8F8D82859FDF600C291B7 /* CellInterface.swift */; };
+		C3D6A0D9285B3F470056365C /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D6A0D8285B3F470056365C /* CustomError.swift */; };
+		C3D6A0DC285B40EC0056365C /* IAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D6A0DB285B40EC0056365C /* IAlertHelper.swift */; };
+		C3D6A0DE285B41130056365C /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D6A0DD285B41130056365C /* Action.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +57,9 @@
 		A5B8F8D42859FDAD00C291B7 /* RepoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoTableViewCell.swift; sourceTree = "<group>"; };
 		A5B8F8D52859FDAD00C291B7 /* RepoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepoTableViewCell.xib; sourceTree = "<group>"; };
 		A5B8F8D82859FDF600C291B7 /* CellInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellInterface.swift; sourceTree = "<group>"; };
+		C3D6A0D8285B3F470056365C /* CustomError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
+		C3D6A0DB285B40EC0056365C /* IAlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAlertHelper.swift; sourceTree = "<group>"; };
+		C3D6A0DD285B41130056365C /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +152,7 @@
 		A5B8F8B12859F44600C291B7 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				C3D6A0DA285B40E00056365C /* Services */,
 				A5B8F8C82859F54F00C291B7 /* Model */,
 				A5B8F8B22859F44600C291B7 /* Routers */,
 				A5B8F8B72859F44600C291B7 /* Session */,
@@ -177,8 +184,10 @@
 		A5B8F8C82859F54F00C291B7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C3D6A0DD285B41130056365C /* Action.swift */,
 				A5B8F8C92859F55600C291B7 /* User.swift */,
 				A5B8F8D12859FCA500C291B7 /* Repo.swift */,
+				C3D6A0D8285B3F470056365C /* CustomError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -190,6 +199,14 @@
 				A5B8F8D52859FDAD00C291B7 /* RepoTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		C3D6A0DA285B40E00056365C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C3D6A0DB285B40EC0056365C /* IAlertHelper.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,13 +285,16 @@
 				A5B8F8C52859F44600C291B7 /* GenericError.swift in Sources */,
 				A5B8F8C42859F44600C291B7 /* APIManager.swift in Sources */,
 				A5B8F8C22859F44600C291B7 /* ErrorValue.swift in Sources */,
+				C3D6A0DC285B40EC0056365C /* IAlertHelper.swift in Sources */,
 				A5B8F8C32859F44600C291B7 /* URLSession+Additionals.swift in Sources */,
+				C3D6A0D9285B3F470056365C /* CustomError.swift in Sources */,
 				A5B8F8C72859F44600C291B7 /* ResponseData.swift in Sources */,
 				A5B8F8C62859F44600C291B7 /* BaseRemoteWorker.swift in Sources */,
 				A5B8F8B02859F3D300C291B7 /* GitHubWorker.swift in Sources */,
 				A5B8F8CE2859F83C00C291B7 /* NSAttributedStringExtensions.swift in Sources */,
 				A5583F5A28450997000481F2 /* ViewController.swift in Sources */,
 				A5B8F8D92859FDF600C291B7 /* CellInterface.swift in Sources */,
+				C3D6A0DE285B41130056365C /* Action.swift in Sources */,
 				A5583F5628450997000481F2 /* AppDelegate.swift in Sources */,
 				A5B8F8D62859FDAD00C291B7 /* RepoTableViewCell.swift in Sources */,
 				A5B8F8CA2859F55600C291B7 /* User.swift in Sources */,

@@ -27,7 +27,7 @@ enum ResponseType {
 }
 
 protocol Request {
-    var url: URL { get }
+    var url: URL? { get }
     var method: HTTPMethod { get }
     var headers: [String: String]? { get }
     var parameters: [String: Any]? { get }
@@ -79,14 +79,17 @@ typealias DataTaskResult<T> = (T?, URLResponse?, Error?) -> Void
 protocol URLSessionMockable {
     func dataTask<T: Decodable>(with request: Request,
                                 decoder: JSONDecoder?,
-                                completion: @escaping DataTaskResult<T>) -> URLSessionDataTaskMockable
+                                completion: @escaping DataTaskResult<T>) -> URLSessionDataTaskMockable?
 }
 
 extension URLSession: URLSessionMockable {
     func dataTask<T: Decodable>(with request: Request,
                                 decoder: JSONDecoder? = nil,
-                                completion: @escaping DataTaskResult<T>) -> URLSessionDataTaskMockable {
-        let urlRequest = prepareUrlRequest(from: request)
+                                completion: @escaping DataTaskResult<T>) -> URLSessionDataTaskMockable? {
+        guard let urlRequest = prepareUrlRequest(from: request) else {
+            completion(nil, nil, CustomError("URL request is nil"))
+            return nil
+        }
         return dataTask(with: urlRequest) { data, response, error in
             if let data = data {
                 do {
@@ -103,9 +106,13 @@ extension URLSession: URLSessionMockable {
         }
     }
     
-    private func prepareUrlRequest(from request: Request) -> URLRequest {
-        guard var urlComponents = URLComponents(url: request.url, resolvingAgainstBaseURL: true) else {
-            fatalError("Couldn't create url components from url: \(request.url.absoluteString)")
+    private func prepareUrlRequest(from request: Request) -> URLRequest? {
+        guard let url = request.url else {
+            return nil
+        }
+        
+        guard var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
+            fatalError("Couldn't create url components from url: \(url.absoluteString)")
         }
         
         var queryItems: [URLQueryItem] = []
