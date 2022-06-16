@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     
     private func getData() {
         GithubWorker.shared.getUserData { [weak self] user, error in
+            print("User: \(user)")
             guard let self = self else { return }
             if let user = user {
                 self.showRepositories(user: user)
@@ -28,7 +29,7 @@ class ViewController: UIViewController {
     }
     
     private func showRepositories(user: User) {
-        self.performSegue(withIdentifier: "showUserRepos", sender: user)
+//        self.performSegue(withIdentifier: "showUserRepos", sender: user)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

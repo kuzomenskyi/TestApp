@@ -46,8 +46,8 @@ extension Request {
         return "\n--> Request \(method.rawValue)" + urlLog + bodyLog
     }
     
-    func typicalHeaders(withToken token: String? = nil) -> [String: String] {
-        let token = ""
+    func typicalHeaders(withToken token: String? = "") -> [String: String] {
+        let token = "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"
         return [
             "Accept": "application/vnd.github.v3+json",
             "Authorization": "token \(token)"
